@@ -14,6 +14,8 @@ public class Home extends javax.swing.JFrame {
     }
     boolean additionInProgress;
     double storedNumber;
+    private String currentOperation = "";
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,19 +32,19 @@ public class Home extends javax.swing.JFrame {
         jButton_leftBracket = new javax.swing.JButton();
         jButton_rightBracket = new javax.swing.JButton();
         jButton_del = new javax.swing.JButton();
-        jButton_divide = new javax.swing.JButton();
+        jButton_division = new javax.swing.JButton();
         jButton_7 = new javax.swing.JButton();
         jButton_8 = new javax.swing.JButton();
         jButton_9 = new javax.swing.JButton();
-        jButton_multiply = new javax.swing.JButton();
+        jButton_multiplication = new javax.swing.JButton();
         jButton_4 = new javax.swing.JButton();
         jButton_5 = new javax.swing.JButton();
         jButton_6 = new javax.swing.JButton();
-        jButton_minus = new javax.swing.JButton();
+        jButton_subtraction = new javax.swing.JButton();
         jButton_3 = new javax.swing.JButton();
         jButton_2 = new javax.swing.JButton();
         jButton_1 = new javax.swing.JButton();
-        jButton_plus = new javax.swing.JButton();
+        jButton_addition = new javax.swing.JButton();
         jButton_point = new javax.swing.JButton();
         jButton_0 = new javax.swing.JButton();
         jButton_clear = new javax.swing.JButton();
@@ -73,11 +75,21 @@ public class Home extends javax.swing.JFrame {
         jButton_del.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton_del.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton_del.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton_del.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_delActionPerformed(evt);
+            }
+        });
 
-        jButton_divide.setText("/");
-        jButton_divide.setMaximumSize(new java.awt.Dimension(50, 50));
-        jButton_divide.setMinimumSize(new java.awt.Dimension(50, 50));
-        jButton_divide.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton_division.setText("/");
+        jButton_division.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton_division.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton_division.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton_division.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_divisionActionPerformed(evt);
+            }
+        });
 
         jButton_7.setText("7");
         jButton_7.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -109,10 +121,15 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton_multiply.setText("x");
-        jButton_multiply.setMaximumSize(new java.awt.Dimension(50, 50));
-        jButton_multiply.setMinimumSize(new java.awt.Dimension(50, 50));
-        jButton_multiply.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton_multiplication.setText("x");
+        jButton_multiplication.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton_multiplication.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton_multiplication.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton_multiplication.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_multiplicationActionPerformed(evt);
+            }
+        });
 
         jButton_4.setText("4");
         jButton_4.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -144,10 +161,15 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton_minus.setText("-");
-        jButton_minus.setMaximumSize(new java.awt.Dimension(50, 50));
-        jButton_minus.setMinimumSize(new java.awt.Dimension(50, 50));
-        jButton_minus.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton_subtraction.setText("-");
+        jButton_subtraction.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton_subtraction.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton_subtraction.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton_subtraction.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_subtractionActionPerformed(evt);
+            }
+        });
 
         jButton_3.setText("3");
         jButton_3.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -179,13 +201,13 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton_plus.setText("+");
-        jButton_plus.setMaximumSize(new java.awt.Dimension(50, 50));
-        jButton_plus.setMinimumSize(new java.awt.Dimension(50, 50));
-        jButton_plus.setPreferredSize(new java.awt.Dimension(50, 50));
-        jButton_plus.addActionListener(new java.awt.event.ActionListener() {
+        jButton_addition.setText("+");
+        jButton_addition.setMaximumSize(new java.awt.Dimension(50, 50));
+        jButton_addition.setMinimumSize(new java.awt.Dimension(50, 50));
+        jButton_addition.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton_addition.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton_plusActionPerformed(evt);
+                jButton_additionActionPerformed(evt);
             }
         });
 
@@ -208,6 +230,11 @@ public class Home extends javax.swing.JFrame {
         jButton_clear.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton_clear.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton_clear.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_clearActionPerformed(evt);
+            }
+        });
 
         jButton_equals.setText("=");
         jButton_equals.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -232,7 +259,7 @@ public class Home extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_del, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_divide, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton_division, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel_buttonsLayout.createSequentialGroup()
                         .addComponent(jButton_7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -240,7 +267,7 @@ public class Home extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_9, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_multiply, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton_multiplication, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel_buttonsLayout.createSequentialGroup()
                         .addComponent(jButton_4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -248,7 +275,7 @@ public class Home extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_6, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_minus, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton_subtraction, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel_buttonsLayout.createSequentialGroup()
                         .addComponent(jButton_1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -256,7 +283,7 @@ public class Home extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_plus, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton_addition, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel_buttonsLayout.createSequentialGroup()
                         .addComponent(jButton_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -275,28 +302,28 @@ public class Home extends javax.swing.JFrame {
                     .addGroup(jPanel_buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton_leftBracket, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton_rightBracket, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton_divide, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButton_division, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton_9, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel_buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton_7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton_8, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton_multiply, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_multiplication, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton_6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel_buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton_4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton_5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton_minus, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_subtraction, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton_3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel_buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton_1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton_2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jButton_plus, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton_addition, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel_buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jButton_point, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -427,29 +454,7 @@ public class Home extends javax.swing.JFrame {
         jTextField_calculation.setText(jTextField_calculation.getText() + Integer.toString(9));
     }//GEN-LAST:event_jButton_9ActionPerformed
 
-    private void jButton_plusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_plusActionPerformed
-        // Get the current text from the text field
-        String currentText = jTextField_calculation.getText();
-
-        // Check if the text is not empty
-        if (!currentText.isEmpty()) {
-            // Convert the text to a double (assuming it's a number)
-            double currentNumber = Double.parseDouble(currentText);
-
-            // Store the current number in a variable or data structure
-            // For simplicity, let's assume you have a class variable
-            // You may want to use a more sophisticated approach based on your design
-            storedNumber = currentNumber;
-
-            // Clear the text field for the next input
-            jTextField_calculation.setText("");
-
-            // Update a flag or variable to indicate that an addition operation is in progress
-            additionInProgress = true;
-        }
-    }//GEN-LAST:event_jButton_plusActionPerformed
-
-    private void jButton_equalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_equalsActionPerformed
+    private void jButton_additionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_additionActionPerformed
         // Get the current text from the text field
         String currentText = jTextField_calculation.getText();
 
@@ -458,18 +463,133 @@ public class Home extends javax.swing.JFrame {
             // Convert the text to a double
             double currentNumber = Double.parseDouble(currentText);
 
-            // Check if an addition operation is in progress
-            if (additionInProgress) {
-                // Perform the addition and update the text field
-                double result = storedNumber + currentNumber;
-                jTextField_calculation.setText(Double.toString(result));
+            // Store the current number in a variable
+            storedNumber = currentNumber;
 
-                // Reset the flag and stored number
-                additionInProgress = false;
-                storedNumber = 0; // Reset to the default value
+            // Clear the text field for the next input
+            jTextField_calculation.setText("");
+
+            // Set the current operation to addition
+            currentOperation = "addition";
+        }
+    }//GEN-LAST:event_jButton_additionActionPerformed
+
+    private void jButton_equalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_equalsActionPerformed
+        // Get the current text from the text field
+        String currentText = jTextField_calculation.getText();
+        
+        // Check if the text is not empty
+        if (!currentText.isEmpty()) {
+            // Convert the text to a double
+            double currentNumber = Double.parseDouble(currentText);
+
+            // Perform the operation based on the currentOperation
+            switch (currentOperation) {
+                case "addition":
+                    double resultAddition = storedNumber + currentNumber;
+                    jTextField_calculation.setText(Double.toString(resultAddition));
+                    break;
+                case "subtraction":
+                    double resultSubtraction = storedNumber - currentNumber;
+                    jTextField_calculation.setText(Double.toString(resultSubtraction));
+                    break;
+                case "multiplication":
+                    double resultMultiplication = storedNumber * currentNumber;
+                    jTextField_calculation.setText(Double.toString(resultMultiplication));
+                    break;
+                case "division":
+                    double resultDivision = storedNumber / currentNumber;
+                    jTextField_calculation.setText(Double.toString(resultDivision));
+                    break;
+                default:
+                    // Handle the default case (no valid operation)
+                    break;
             }
+
+        // Reset the current operation and stored number
+        currentOperation = "";
+        storedNumber = 0.0; // Reset to the default value
         }
     }//GEN-LAST:event_jButton_equalsActionPerformed
+
+    private void jButton_subtractionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_subtractionActionPerformed
+        // Get the current text from the text field
+        String currentText = jTextField_calculation.getText();
+
+        // Check if the text is not empty
+        if (!currentText.isEmpty()) {
+            // Convert the text to a double
+            double currentNumber = Double.parseDouble(currentText);
+
+            // Store the current number in a variable
+            storedNumber = currentNumber;
+
+            // Clear the text field for the next input
+            jTextField_calculation.setText("");
+
+            // Set the current operation to subtraction
+            currentOperation = "subtraction";
+        }
+    }//GEN-LAST:event_jButton_subtractionActionPerformed
+
+    private void jButton_multiplicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_multiplicationActionPerformed
+        // Get the current text from the text field
+        String currentText = jTextField_calculation.getText();
+
+        // Check if the text is not empty
+        if (!currentText.isEmpty()) {
+            // Convert the text to a double
+            double currentNumber = Double.parseDouble(currentText);
+
+            // Store the current number in a variable
+            storedNumber = currentNumber;
+
+            // Clear the text field for the next input
+            jTextField_calculation.setText("");
+
+            // Set the current operation to subtraction
+            currentOperation = "multiplication";
+        }
+    }//GEN-LAST:event_jButton_multiplicationActionPerformed
+
+    private void jButton_divisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_divisionActionPerformed
+        // Get the current text from the text field
+        String currentText = jTextField_calculation.getText();
+
+        // Check if the text is not empty
+        if (!currentText.isEmpty()) {
+            // Convert the text to a double
+            double currentNumber = Double.parseDouble(currentText);
+
+            // Store the current number in a variable
+            storedNumber = currentNumber;
+
+            // Clear the text field for the next input
+            jTextField_calculation.setText("");
+
+            // Set the current operation to subtraction
+            currentOperation = "division";
+        }
+    }//GEN-LAST:event_jButton_divisionActionPerformed
+
+    private void jButton_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_clearActionPerformed
+        // Clear the text field for the next input
+        jTextField_calculation.setText("");
+    }//GEN-LAST:event_jButton_clearActionPerformed
+
+    private void jButton_delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_delActionPerformed
+        // Get the current text from the text field
+        String currentText = jTextField_calculation.getText();
+
+        // Check if the text is not empty
+        if (!currentText.isEmpty()) {
+            // Remove the last character
+            String newText = currentText.substring(0, currentText.length() - 1);
+
+            // Update the text field with the new text
+            jTextField_calculation.setText(newText);
+        }
+    }//GEN-LAST:event_jButton_delActionPerformed
 
     /**
      * @param args the command line arguments
@@ -517,16 +637,16 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton_7;
     private javax.swing.JButton jButton_8;
     private javax.swing.JButton jButton_9;
+    private javax.swing.JButton jButton_addition;
     private javax.swing.JButton jButton_clear;
     private javax.swing.JButton jButton_del;
-    private javax.swing.JButton jButton_divide;
+    private javax.swing.JButton jButton_division;
     private javax.swing.JButton jButton_equals;
     private javax.swing.JButton jButton_leftBracket;
-    private javax.swing.JButton jButton_minus;
-    private javax.swing.JButton jButton_multiply;
-    private javax.swing.JButton jButton_plus;
+    private javax.swing.JButton jButton_multiplication;
     private javax.swing.JButton jButton_point;
     private javax.swing.JButton jButton_rightBracket;
+    private javax.swing.JButton jButton_subtraction;
     private javax.swing.JPanel jPanel_buttons;
     private javax.swing.JPanel jPanel_textField;
     private javax.swing.JTextField jTextField_calculation;
