@@ -16,10 +16,10 @@ Java program that calculates user's desired math problems with the numbus GUI th
 
 ## Screenshots
 - This is the divide action clearly illustrated at the bottom left.
-![Image of duration media player](Screenshot/1.jpg)
+![Image of duration media player](Screenshot/1.png)
 
 - Upon completion, the bottom text vanishes.
-![Image of duration media player](Screenshot/2.jpg)
+![Image of duration media player](Screenshot/2.png)
 
 ## Notes
 - If you want to find percentage, simply click the % button after you calculate.. for example 80x40 which is 3200 then click the % symbol to get the percentage.
