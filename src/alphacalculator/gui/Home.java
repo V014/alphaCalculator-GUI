@@ -62,7 +62,7 @@ public class Home extends javax.swing.JFrame {
 
         jPanel_textField.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTextField_calculation.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jTextField_calculation.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextField_calculation.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
         jPanel_textField.add(jTextField_calculation);
 
@@ -86,7 +86,6 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton_del.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
         jButton_del.setText("Del");
         jButton_del.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton_del.setMinimumSize(new java.awt.Dimension(50, 50));
@@ -372,7 +371,7 @@ public class Home extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel_buttons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
