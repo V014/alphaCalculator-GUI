@@ -53,10 +53,11 @@ public class Home extends javax.swing.JFrame {
         jButton_0 = new javax.swing.JButton();
         jButton_clear = new javax.swing.JButton();
         jButton_equals = new javax.swing.JButton();
+        jLabel_calculation = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Java Calculator");
-        setPreferredSize(new java.awt.Dimension(315, 400));
+        setPreferredSize(new java.awt.Dimension(315, 410));
         setResizable(false);
 
         jPanel_textField.setLayout(new java.awt.GridLayout(1, 0));
@@ -85,6 +86,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
+        jButton_del.setBackground(javax.swing.UIManager.getDefaults().getColor("Actions.Red"));
         jButton_del.setText("Del");
         jButton_del.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton_del.setMinimumSize(new java.awt.Dimension(50, 50));
@@ -95,7 +97,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        jButton_division.setText("/");
+        jButton_division.setText("÷");
         jButton_division.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton_division.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton_division.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -304,11 +306,16 @@ public class Home extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_addition, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel_buttonsLayout.createSequentialGroup()
-                        .addComponent(jButton_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_0, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton_point, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel_buttonsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel_buttonsLayout.createSequentialGroup()
+                                .addComponent(jButton_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton_0, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton_point, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel_buttonsLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel_calculation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton_equals, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -350,6 +357,8 @@ public class Home extends javax.swing.JFrame {
                         .addComponent(jButton_clear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton_0, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton_equals, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_calculation, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -365,8 +374,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel_buttons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jPanel_buttons, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -487,6 +495,9 @@ public class Home extends javax.swing.JFrame {
 
             // Clear the text field for the next input
             jTextField_calculation.setText("");
+            
+            // Tell the user what they are doing
+            jLabel_calculation.setText(currentText + " add by...");
 
             // Set the current operation to addition
             currentOperation = "addition";
@@ -537,10 +548,12 @@ public class Home extends javax.swing.JFrame {
                     // Handle the default case (no valid operation)
                     break;
             }
-
+        
         // Reset the current operation and stored number
         currentOperation = "";
         storedNumber = 0.0; // Reset to the default value
+        // Tell the user what they are doing
+            jLabel_calculation.setText("");
         }
     }//GEN-LAST:event_jButton_equalsActionPerformed
 
@@ -558,6 +571,9 @@ public class Home extends javax.swing.JFrame {
 
             // Clear the text field for the next input
             jTextField_calculation.setText("");
+            
+            // Tell the user what they are doing
+            jLabel_calculation.setText(currentText + " subtract by...");
 
             // Set the current operation to subtraction
             currentOperation = "subtraction";
@@ -578,6 +594,9 @@ public class Home extends javax.swing.JFrame {
 
             // Clear the text field for the next input
             jTextField_calculation.setText("");
+            
+            // Tell the user what they are doing
+            jLabel_calculation.setText(currentText + " multiplied by...");
 
             // Set the current operation to subtraction
             currentOperation = "multiplication";
@@ -598,6 +617,9 @@ public class Home extends javax.swing.JFrame {
 
             // Clear the text field for the next input
             jTextField_calculation.setText("");
+            
+            // Tell the user what they are doing
+            jLabel_calculation.setText(currentText + " divided by...");
 
             // Set the current operation to subtraction
             currentOperation = "division";
@@ -606,7 +628,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jButton_clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_clearActionPerformed
         // Clear the text field for the next input
-        jTextField_calculation.setText("");
+        jTextField_calculation.setText("0");
     }//GEN-LAST:event_jButton_clearActionPerformed
 
     private void jButton_delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_delActionPerformed
@@ -731,6 +753,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton jButton_pi;
     private javax.swing.JButton jButton_point;
     private javax.swing.JButton jButton_subtraction;
+    private javax.swing.JLabel jLabel_calculation;
     private javax.swing.JPanel jPanel_buttons;
     private javax.swing.JPanel jPanel_textField;
     private javax.swing.JTextField jTextField_calculation;
