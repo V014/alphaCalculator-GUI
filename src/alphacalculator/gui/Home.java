@@ -12,6 +12,8 @@ public class Home extends javax.swing.JFrame {
         initComponents();
         jTextField_calculation.setText("0");
     }
+    boolean additionInProgress;
+    double storedNumber;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,6 +183,11 @@ public class Home extends javax.swing.JFrame {
         jButton_plus.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton_plus.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton_plus.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton_plus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_plusActionPerformed(evt);
+            }
+        });
 
         jButton_point.setText(".");
         jButton_point.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -206,6 +213,11 @@ public class Home extends javax.swing.JFrame {
         jButton_equals.setMaximumSize(new java.awt.Dimension(50, 50));
         jButton_equals.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton_equals.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton_equals.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_equalsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel_buttonsLayout = new javax.swing.GroupLayout(jPanel_buttons);
         jPanel_buttons.setLayout(jPanel_buttonsLayout);
@@ -414,6 +426,50 @@ public class Home extends javax.swing.JFrame {
         // append the number one
         jTextField_calculation.setText(jTextField_calculation.getText() + Integer.toString(9));
     }//GEN-LAST:event_jButton_9ActionPerformed
+
+    private void jButton_plusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_plusActionPerformed
+        // Get the current text from the text field
+        String currentText = jTextField_calculation.getText();
+
+        // Check if the text is not empty
+        if (!currentText.isEmpty()) {
+            // Convert the text to a double (assuming it's a number)
+            double currentNumber = Double.parseDouble(currentText);
+
+            // Store the current number in a variable or data structure
+            // For simplicity, let's assume you have a class variable
+            // You may want to use a more sophisticated approach based on your design
+            storedNumber = currentNumber;
+
+            // Clear the text field for the next input
+            jTextField_calculation.setText("");
+
+            // Update a flag or variable to indicate that an addition operation is in progress
+            additionInProgress = true;
+        }
+    }//GEN-LAST:event_jButton_plusActionPerformed
+
+    private void jButton_equalsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_equalsActionPerformed
+        // Get the current text from the text field
+        String currentText = jTextField_calculation.getText();
+
+        // Check if the text is not empty
+        if (!currentText.isEmpty()) {
+            // Convert the text to a double
+            double currentNumber = Double.parseDouble(currentText);
+
+            // Check if an addition operation is in progress
+            if (additionInProgress) {
+                // Perform the addition and update the text field
+                double result = storedNumber + currentNumber;
+                jTextField_calculation.setText(Double.toString(result));
+
+                // Reset the flag and stored number
+                additionInProgress = false;
+                storedNumber = 0; // Reset to the default value
+            }
+        }
+    }//GEN-LAST:event_jButton_equalsActionPerformed
 
     /**
      * @param args the command line arguments
