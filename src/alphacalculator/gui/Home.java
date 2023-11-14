@@ -4,10 +4,6 @@ package alphacalculator.gui;
  * @author Wanga Knajala
  */
 
-import javax.script.ScriptEngine;
-import javax.script.ScriptEngineManager;
-import javax.script.ScriptException;
-
 public class Home extends javax.swing.JFrame {
 
     /**
@@ -514,19 +510,19 @@ public class Home extends javax.swing.JFrame {
 
             // Perform the operation based on the currentOperation
             switch (currentOperation) {
-                case "addition":
+                case "addition" -> {
                     double resultAddition = storedNumber + currentNumber;
                     jTextField_calculation.setText(Double.toString(resultAddition));
-                    break;
-                case "subtraction":
+                }
+                case "subtraction" -> {
                     double resultSubtraction = storedNumber - currentNumber;
                     jTextField_calculation.setText(Double.toString(resultSubtraction));
-                    break;
-                case "multiplication":
+                }
+                case "multiplication" -> {
                     double resultMultiplication = storedNumber * currentNumber;
                     jTextField_calculation.setText(Double.toString(resultMultiplication));
-                    break;
-                case "division":
+                }
+                case "division" -> {
                     try {
                         // Attempt to perform division
                         double resultDivision = storedNumber / currentNumber;
@@ -542,11 +538,11 @@ public class Home extends javax.swing.JFrame {
                         // Handle division by zero or other arithmetic errors
                         jTextField_calculation.setText("Error");
                     }
-                    break;
-                default:
-                    // Handle the default case (no valid operation)
-                    break;
+                }
+                default -> {
+                }
             }
+            // Handle the default case (no valid operation)
         
         // Reset the current operation and stored number
         currentOperation = "";
@@ -675,7 +671,7 @@ public class Home extends javax.swing.JFrame {
             double currentNumber = Double.parseDouble(currentText);
 
             // Calculate the percentage
-            double resultPercentage = currentNumber / 100.0;
+            double resultPercentage = currentNumber * 100.0;
 
             // Update the text field with the result
             jTextField_calculation.setText(Double.toString(resultPercentage));
